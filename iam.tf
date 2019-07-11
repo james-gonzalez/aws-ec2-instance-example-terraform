@@ -1,11 +1,6 @@
 resource "aws_iam_role" "default" {
   name = "test_role"
-
-  assume_role_policy = data.aws_iam_policy_document.default.json
-
-  tags = {
-    tag-key = "testing"
-  }
+  assume_role_policy = data.aws_iam_policy_document.trust.json
 }
 
 resource "aws_iam_instance_profile" "default" {
@@ -13,38 +8,33 @@ resource "aws_iam_instance_profile" "default" {
   role = aws_iam_role.default.name
 }
 
+resource "aws_iam_role_policy" "default" {
+  name   = "default-policy"
+  role   = aws_iam_role.default.name
+  policy = data.aws_iam_policy_document.default.json
+}
+
+data "aws_iam_policy_document" "trust" {
+  statement {
+    effect = "Allow"
+    principals {
+      type = "Service"
+      identifiers = [
+        "s3.amazonaws.com"
+      ]
+    }
+    actions = ["sts:AssumeRole"]
+  }
+}
 
 data "aws_iam_policy_document" "default" {
   statement {
-    sid = "1"
-
+    effect    = "Allow"
     actions = [
-      "s3:ListAllMyBuckets",
-      "s3:GetBucketLocation",
+      "s3:List*",
+      "s3:Put*",
+      "s3:Get*"
     ]
-
-    resources = [
-      "arn:aws:s3:::*",
-    ]
-  }
-
-  statement {
-    actions = [
-      "s3:*",
-    ]
-
-    resources = [
-      "arn:aws:s3:::${var.s3_bucket_name}",
-    ]
-  }
-
-  statement {
-    actions = [
-      "rds:*"
-    ]
-
-    resources = [
-      "arn:aws:rds:*:{data.aws_caller_identity.current.account_id}:*:*"
-    ]
+    resources = ["arn:aws:s3:::${var.s3_bucket_name}"]
   }
 }

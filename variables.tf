@@ -1,5 +1,5 @@
 variable "s3_bucket_name" {
-  default = "jg-test-bucket"
+  default = "jamesg-data-test-bucket"
 }
 
 variable "vpc_cidr" {
