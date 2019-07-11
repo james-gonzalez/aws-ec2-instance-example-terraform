@@ -35,3 +35,7 @@ terraform apply
 | s3\_bucket\_name |  | string | `"jg-test-bucket"` | no |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+## Authors
+
+Code written by [James Gonzalez](https://github.com/cultavix)
