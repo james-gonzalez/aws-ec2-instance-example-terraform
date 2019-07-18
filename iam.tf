@@ -1,5 +1,5 @@
 resource "aws_iam_role" "default" {
-  name = "test_role"
+  name               = "test_role"
   assume_role_policy = data.aws_iam_policy_document.trust.json
 }
 
@@ -29,7 +29,7 @@ data "aws_iam_policy_document" "trust" {
 
 data "aws_iam_policy_document" "default" {
   statement {
-    effect    = "Allow"
+    effect = "Allow"
     actions = [
       "s3:List*",
       "s3:Put*",

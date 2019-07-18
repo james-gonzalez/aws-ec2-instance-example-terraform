@@ -36,7 +36,11 @@ terraform apply
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| s3\_bucket\_name |  | string | `"jg-test-bucket"` | no |
+| egress\_cidr |  | list | `[ "0.0.0.0/0" ]` | no |
+| ingress\_cidr |  | list | `[ "0.0.0.0/0" ]` | no |
+| region |  | string | `"eu-west-1"` | no |
+| s3\_bucket\_name |  | string | `"jamesg-data-test-bucket"` | no |
+| vpc\_cidr |  | string | `"10.0.0.0/16"` | no |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
