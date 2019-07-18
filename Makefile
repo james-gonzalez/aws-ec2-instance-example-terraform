@@ -1,7 +1,7 @@
 .PHONY: changelog release
 
 changelog:
-	git-chglog -o CHANGELOG.md --next-tag `semtag final -s minor -o`
+	git-chglog -o CHANGELOG.md 
 
 release:
 	semtag final -s minor

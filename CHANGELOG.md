@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="v0.4.0"></a>
+## [v0.4.0] - 2019-07-18
+
+<a name="v0.3.0"></a>
+## [v0.3.0] - 2019-07-11
+
 <a name="v0.2.0"></a>
 ## [v0.2.0] - 2019-07-11
 ### Pull Requests
@@ -15,5 +21,7 @@
 - Merge pull request [#1](https://github.com/cultavix/aws-ec2-instance-example-terraform/issues/1) from cultavix/bug/fixed-iam-policy-trust
 
 
-[Unreleased]: https://github.com/cultavix/aws-ec2-instance-example-terraform/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/cultavix/aws-ec2-instance-example-terraform/compare/v0.4.0...HEAD
+[v0.4.0]: https://github.com/cultavix/aws-ec2-instance-example-terraform/compare/v0.3.0...v0.4.0
+[v0.3.0]: https://github.com/cultavix/aws-ec2-instance-example-terraform/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/cultavix/aws-ec2-instance-example-terraform/compare/v0.1.0...v0.2.0
