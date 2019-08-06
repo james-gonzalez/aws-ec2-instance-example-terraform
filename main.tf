@@ -30,8 +30,9 @@ resource "aws_s3_bucket" "default" {
 }
 
 resource "aws_instance" "test" {
+  for_each               = local.instances
   ami                    = "${data.aws_ami.ubuntu.id}"
-  instance_type          = "t2.small"
+  instance_type          = each.value
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
   subnet_id              = aws_subnet.test.*.id[0]
   iam_instance_profile   = aws_iam_instance_profile.default.name
@@ -41,5 +42,3 @@ resource "aws_instance" "test" {
     Name = data.aws_ami.ubuntu.id
   }
 }
-
-
