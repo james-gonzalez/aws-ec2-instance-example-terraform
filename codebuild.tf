@@ -22,15 +22,11 @@ resource "aws_codebuild_project" "codebuild_project_with_secondary_source" {
     location = aws_codecommit_repository.codecommit_repository.clone_url_http
   }
   dynamic "secondary_sources" {
-    for_each = [for s in local.secondary_sources : {
-      type              = s.type
-      source_identifier = s.source_identifier
-      location          = s.location
-    }]
+    for_each = var.secondary_sources == false ? [] : [1]
     content {
-      type              = secondary_sources.value.type
-      source_identifier = secondary_sources.value.source_identifier
-      location          = secondary_sources.value.location
+      type              = var.codebuild_secondary_source_type
+      source_identifier = var.codebuild_secondary_source_identifier
+      location          = var.codebuild_secondary_source_location
     }
   }
   artifacts {

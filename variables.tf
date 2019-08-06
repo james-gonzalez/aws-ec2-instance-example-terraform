@@ -139,3 +139,8 @@ variable codepipeline_tags {
   type        = map(string)
   default     = {}
 }
+
+variable "secondary_sources" {
+  description = "Enables secondary sources if set to true"
+  default     = false
+}

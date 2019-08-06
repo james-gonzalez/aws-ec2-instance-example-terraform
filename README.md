@@ -40,6 +40,7 @@ terraform apply
 | ingress\_cidr |  | list | `[ "0.0.0.0/0" ]` | no |
 | region |  | string | `"eu-west-1"` | no |
 | s3\_bucket\_name |  | string | `"jamesg-data-test-bucket"` | no |
+| secondary\_sources | Enables secondary sources if set to true | string | `"false"` | no |
 | vpc\_cidr |  | string | `"10.0.0.0/16"` | no |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
