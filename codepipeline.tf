@@ -52,7 +52,7 @@ resource "aws_codepipeline" "codepipeline" {
   }
   ## Dynamic Stages for each environment
   dynamic "stage" {
-    for_each = local.stages
+    for_each = var.stages
     content {
       name = stage.value["name"]
       action {
@@ -62,7 +62,9 @@ resource "aws_codepipeline" "codepipeline" {
         provider        = stage.value["provider"]
         version         = stage.value["version"]
         input_artifacts = stage.value["input_artifacts"]
-        configuration   = stage.value["configuration"]
+        configuration = {
+          ProjectName = var.codebuild_project_name
+        }
       }
     }
   }
@@ -86,16 +88,24 @@ locals {
     configuration = {
       ProjectName = var.codebuild_project_name
     }
-    },
-    {
-      name            = "PreProd"
-      category        = "Build"
-      owner           = "AWS"
-      provider        = "CodeBuild"
-      version         = "1"
-      input_artifacts = ["Source"]
-      configuration = {
-        ProjectName = var.codebuild_project_name
-      }
+  }]
+}
+
+variable "stages" {
+  type = list(object({
+    name            = string
+    category        = string
+    owner           = string
+    provider        = string
+    version         = string
+    input_artifacts = list(string)
+  }))
+  default = [{
+    name            = "Apply"
+    category        = "Build"
+    owner           = "AWS"
+    provider        = "CodeBuild"
+    version         = "1"
+    input_artifacts = ["Source"]
   }]
 }
