@@ -77,35 +77,4 @@ locals {
     instance_type1 = "t2.small"
     instance_type2 = "t2.small"
   }
-  # CodePipeline
-  stages = [{
-    name            = "Dev"
-    category        = "Build"
-    owner           = "AWS"
-    provider        = "CodeBuild"
-    version         = "1"
-    input_artifacts = ["Source"]
-    configuration = {
-      ProjectName = var.codebuild_project_name
-    }
-  }]
-}
-
-variable "stages" {
-  type = list(object({
-    name            = string
-    category        = string
-    owner           = string
-    provider        = string
-    version         = string
-    input_artifacts = list(string)
-  }))
-  default = [{
-    name            = "Apply"
-    category        = "Build"
-    owner           = "AWS"
-    provider        = "CodeBuild"
-    version         = "1"
-    input_artifacts = ["Source"]
-  }]
 }

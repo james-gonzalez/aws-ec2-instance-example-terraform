@@ -144,3 +144,25 @@ variable "secondary_sources" {
   description = "Enables secondary sources if set to true"
   default     = false
 }
+
+variable "stages" {
+  description = "Set of variables and their types for the CodePipeline stages"
+  type = list(object({
+    name            = string
+    category        = string
+    owner           = string
+    provider        = string
+    version         = string
+    buildspec       = string
+    input_artifacts = list(string)
+  }))
+  default = [{
+    name            = "Apply"
+    category        = "Build"
+    owner           = "AWS"
+    provider        = "CodeBuild"
+    version         = "1"
+    buildspec       = "buildspec.yml"
+    input_artifacts = ["Source"]
+  }]
+}

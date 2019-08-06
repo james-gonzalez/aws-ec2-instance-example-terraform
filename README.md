@@ -41,7 +41,7 @@ terraform apply
 | region |  | string | `"eu-west-1"` | no |
 | s3\_bucket\_name |  | string | `"jamesg-data-test-bucket"` | no |
 | secondary\_sources | Enables secondary sources if set to true | string | `"false"` | no |
-| stages |  | object | `[ { "category": "Build", "input_artifacts": [ "Source" ], "name": "Apply", "owner": "AWS", "provider": "CodeBuild", "version": "1" } ]` | no |
+| stages | Set of variables and their types for the CodePipeline stages | object | `[ { "buildspec": "buildspec.yml", "category": "Build", "input_artifacts": [ "Source" ], "name": "Apply", "owner": "AWS", "provider": "CodeBuild", "version": "1" } ]` | no |
 | vpc\_cidr |  | string | `"10.0.0.0/16"` | no |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

@@ -20,6 +20,7 @@ resource "aws_codebuild_project" "codebuild_project" {
   source {
     type     = var.codebuild_source_type
     location = aws_codecommit_repository.codecommit_repository.clone_url_http
+    # buildspec = var.stages.["buildspec"] ## I dont know how to access a single value of the variable list "stages"
   }
   dynamic "secondary_sources" {
     for_each = var.secondary_sources == false ? [] : [1]
@@ -27,6 +28,7 @@ resource "aws_codebuild_project" "codebuild_project" {
       type              = var.codebuild_secondary_source_type
       source_identifier = var.codebuild_secondary_source_identifier
       location          = var.codebuild_secondary_source_location
+      # buildspec = var.stages.["buildspec"] ## I dont know how to access a single value of the variable list "stages"
     }
   }
   artifacts {
