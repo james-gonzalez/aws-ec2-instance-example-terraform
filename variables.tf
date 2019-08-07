@@ -153,16 +153,14 @@ variable "codepipeline_stages" {
     owner           = string
     provider        = string
     version         = string
-    buildspec       = string
     input_artifacts = list(string)
   }))
   default = [{
-    name            = "Apply"
+    name            = "Dev"
     category        = "Build"
     owner           = "AWS"
     provider        = "CodeBuild"
     version         = "1"
-    buildspec       = "buildspec.yml"
     input_artifacts = ["Source"]
     },
     {
@@ -171,7 +169,6 @@ variable "codepipeline_stages" {
       owner           = "AWS"
       provider        = "CodeBuild"
       version         = "1"
-      buildspec       = "buildspec-ppe.yml"
       input_artifacts = ["Source"]
   }]
 }

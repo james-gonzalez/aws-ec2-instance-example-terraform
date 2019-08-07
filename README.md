@@ -36,7 +36,7 @@ terraform apply
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| codepipeline\_stages | Set of variables and their types for the CodePipeline stages | object | `[ { "buildspec": "buildspec.yml", "category": "Build", "input_artifacts": [ "Source" ], "name": "Apply", "owner": "AWS", "provider": "CodeBuild", "version": "1" }, { "buildspec": "buildspec-ppe.yml", "category": "Build", "input_artifacts": [ "Source" ], "name": "Preprod", "owner": "AWS", "provider": "CodeBuild", "version": "1" } ]` | no |
+| codepipeline\_stages | Set of variables and their types for the CodePipeline stages | object | `[ { "category": "Build", "input_artifacts": [ "Source" ], "name": "Dev", "owner": "AWS", "provider": "CodeBuild", "version": "1" }, { "category": "Build", "input_artifacts": [ "Source" ], "name": "Preprod", "owner": "AWS", "provider": "CodeBuild", "version": "1" } ]` | no |
 | egress\_cidr |  | list | `[ "0.0.0.0/0" ]` | no |
 | ingress\_cidr |  | list | `[ "0.0.0.0/0" ]` | no |
 | region |  | string | `"eu-west-1"` | no |
