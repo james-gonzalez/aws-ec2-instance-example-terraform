@@ -1,6 +1,6 @@
 # AWS EC2 Instance Terraform 
 
-This is an example bit of code written in Terraform at version `0.12.3`. This shows you the fundamentals of Terraform and some cool little utilities you can use to maximise your development process and ensure maximum code quality in an automated fashion.
+This is an example bit of code written in Terraform at version `0.12.6`. This shows you the fundamentals of Terraform and some cool little utilities you can use to maximise your development process and ensure maximum code quality in an automated fashion.
 
 ## Features
 * EC2 Instance
