@@ -3,7 +3,8 @@
 This is an example bit of code written in Terraform at version `0.12.6`. This shows you the fundamentals of Terraform and some cool little utilities you can use to maximise your development process and ensure maximum code quality in an automated fashion.
 
 ## Features
-* EC2 Instance
+* EC2 Instance based on `for_each` per instance
+* CodeCommit / CodePipeline / CodeBuild uing `for_each` both for attributes and the resources (CodeBuild) required
 * Automated Semantic Versioning/Tagging and updating of CHANGELOG.md
 * Creation of an S3 bucket for data storage
 * Attachment of an IAM policy to acccess that bucket
