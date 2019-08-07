@@ -52,7 +52,7 @@ resource "aws_codepipeline" "codepipeline" {
   }
   ## Dynamic Stages for each environment
   dynamic "stage" {
-    for_each = var.stages
+    for_each = var.codepipeline_stages
     content {
       name = stage.value["name"]
       action {
