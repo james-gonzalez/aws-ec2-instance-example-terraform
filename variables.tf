@@ -145,7 +145,7 @@ variable "secondary_sources" {
   default     = false
 }
 
-variable "stages" {
+variable "codepipeline_stages" {
   description = "Set of variables and their types for the CodePipeline stages"
   type = list(object({
     name            = string
@@ -164,5 +164,21 @@ variable "stages" {
     version         = "1"
     buildspec       = "buildspec.yml"
     input_artifacts = ["Source"]
+    },
+    {
+      name            = "Preprod"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      buildspec       = "buildspec-ppe.yml"
+      input_artifacts = ["Source"]
   }]
+}
+
+variable codebuild_stages {
+  default = {
+    dev     = "buildspec.yml"
+    preprod = "buildspec-preprod.yml"
+  }
 }
