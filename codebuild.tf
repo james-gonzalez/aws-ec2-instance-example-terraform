@@ -1,4 +1,4 @@
-resource "aws_codebuild_project" "codebuild_project" {
+resource "aws_codebuild_project" "stage" {
   for_each     = var.codebuild_stages
   name         = "${var.codebuild_project_name}-${each.key}"
   service_role = aws_iam_role.pipeline_role.arn
